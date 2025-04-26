@@ -1,0 +1,49 @@
+<div class="resume-container" #resumeContainer>
+  <div class="parallax-bg"></div>
+  <div class="particles"></div>
+
+  <!-- Header Section -->
+  <header class="header-section">
+    <h1 class="name">Ashok Vishwakarma</h1>
+    <h2 class="title">Full Stack Developer | Java Spring Boot | Angular</h2>
+    <p class="summary">
+      Passionate software engineer with 2.5+ years of experience in building
+      modern web applications with Spring Boot, Angular.
+    </p>
+    <div class="header-accent"></div>
+  </header>
+
+  <!-- Education Section -->
+  <section class="education-section">
+    <div class="section-divider"></div>
+
+    <div class="education-cards">
+      <div
+        class="education-card"
+        (click)="goToResume()"
+        style="cursor: pointer"
+      >
+        <div class="education-icon">
+          <i class="fas fa-file-alt"></i>
+        </div>
+        <div class="education-details">
+          <h3 class="degree">Resume</h3>
+          <div class="institution">My Resume</div>
+        </div>
+      </div>
+      <div
+        class="education-card"
+        (click)="goToProjects()"
+        style="cursor: pointer"
+      >
+        <div class="education-icon">
+          <i class="fas fa-code"></i>
+        </div>
+        <div class="education-details">
+          <h3 class="degree">Projects</h3>
+          <div class="institution">Personal Projects</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

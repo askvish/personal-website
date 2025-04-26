@@ -1,0 +1,161 @@
+<div class="resume-container">
+  <!-- Header Section -->
+  <header class="resume-header">
+    <div class="header-content" @fadeIn>
+      <h1>My Journey - Ashok</h1>
+      <p>Interactive timeline showcasing my career progression and skills</p>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="section-nav">
+      <ul>
+        <li
+          [class.active]="activeSection === 'experience'"
+          (click)="setActiveSection('experience')"
+        >
+          <span class="nav-icon"><i class="fas fa-briefcase"></i></span>
+          <span class="nav-text">Experience</span>
+        </li>
+        <li
+          [class.active]="activeSection === 'skills'"
+          (click)="setActiveSection('skills')"
+        >
+          <span class="nav-icon"><i class="fas fa-chart-bar"></i></span>
+          <span class="nav-text">Skills</span>
+        </li>
+        <li
+          [class.active]="activeSection === 'education'"
+          (click)="setActiveSection('education')"
+        >
+          <span class="nav-icon"><i class="fas fa-graduation-cap"></i></span>
+          <span class="nav-text">Education</span>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Experience Section -->
+  <section id="experience-section" class="resume-section experience-section">
+    <h2 @slideIn>Work Experience</h2>
+
+    <div class="experience-container">
+      <!-- Timeline -->
+      <div class="experience-timeline">
+        <ng-container *ngFor="let exp of experiences; let i = index">
+          <div
+            class="timeline-item"
+            [class.active]="selectedExperience?.id === exp.id"
+            (click)="selectExperience(exp)"
+            (mouseenter)="animateExperienceHover($event.target, true)"
+            (mouseleave)="animateExperienceHover($event.target, false)"
+            @staggerList
+          >
+            <div class="timeline-marker">
+              <div class="marker-dot"></div>
+              <div class="marker-line" *ngIf="i < experiences.length - 1"></div>
+            </div>
+
+            <div class="timeline-content">
+              <div class="company-logo" *ngIf="exp.logo">
+                <img [src]="exp.logo" [alt]="exp.company + ' logo'" />
+              </div>
+              <h3>{{ exp.company }}</h3>
+              <h4>{{ exp.position }}</h4>
+              <p class="period">{{ exp.period }}</p>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+
+      <!-- Experience Details -->
+      <div class="experience-details" *ngIf="selectedExperience" @fadeIn>
+        <div class="detail-header">
+          <h3>{{ selectedExperience?.company }}</h3>
+          <h4>{{ selectedExperience?.position }}</h4>
+          <p class="period">{{ selectedExperience?.period }}</p>
+        </div>
+
+        <div class="detail-body">
+          <h5>Responsibilities & Achievements</h5>
+          <ul>
+            <li
+              *ngFor="let item of selectedExperience.description"
+              @staggerList
+            >
+              {{ item }}
+            </li>
+          </ul>
+
+          <h5>Technologies Used</h5>
+          <div class="tech-tags">
+            <span
+              class="tech-tag"
+              *ngFor="let skill of selectedExperience.skills"
+              @staggerList
+            >
+              {{ skill }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills-section" class="resume-section skills-section">
+    <h2 @slideIn>Technical Skills</h2>
+
+    <div class="skills-container">
+      <div class="skill-category" *ngFor="let category of skillCategories">
+        <h3>{{ category }}</h3>
+
+        <div class="skill-list">
+          <div
+            class="skill-item"
+            *ngFor="let skill of getFilteredSkills(category)"
+            @staggerList
+          >
+            <div class="skill-header">
+              <span class="skill-name">{{ skill.name }}</span>
+              <span class="skill-level">{{ skill.level }}%</span>
+            </div>
+
+            <div class="skill-progress">
+              <div class="skill-progress-bg"></div>
+              <div
+                class="skill-progress-bar"
+                [attr.data-level]="skill.level"
+                [@expandSkill]="{
+                  value: showSkills ? 'expanded' : 'collapsed',
+                  params: { level: skill.level }
+                }"
+              >
+                <div class="skill-progress-glow"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education-section" class="resume-section education-section">
+    <h2 @slideIn>Education & Qualifications</h2>
+
+    <div class="education-container" @staggerList>
+      <div class="education-card" *ngFor="let edu of education" @fadeIn>
+        <div class="education-icon">
+          <i class="fas fa-university"></i>
+        </div>
+
+        <div class="education-content">
+          <h3>{{ edu.institution }}</h3>
+          <h4>{{ edu.degree }}</h4>
+          <p class="period">{{ edu.period }}</p>
+          <p class="description">{{ edu.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,300 @@
+// Modern variables
+$primary-color: #00c8ff;
+$secondary-color: #8a2be2;
+$dark-color: #111827;
+$light-color: #f8fafc;
+$accent-color: #ff6b6b;
+$gradient-primary: linear-gradient(135deg, $primary-color, $secondary-color);
+
+.project-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  padding: 16px;
+  justify-items: center;
+  min-height: 60vh;
+}
+// Global styles
+.resume-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 6rem;
+  font-family: "Inter", "Roboto", sans-serif;
+  color: $dark-color;
+  overflow: hidden;
+  // min-height: 100vh;
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+// Header styles
+.header-section {
+  padding: 4rem 0 0 0;
+  position: relative;
+  overflow: hidden;
+
+  .name {
+    font-size: 4rem;
+    font-weight: 800;
+    margin: 0;
+    background: $gradient-primary;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.1;
+  }
+
+  .title {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin: 0.5rem 0 2rem;
+    color: $secondary-color;
+  }
+
+  .summary {
+    font-size: 1.25rem;
+    min-height: 64px;
+    max-width: 800px;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .header-accent {
+    position: absolute;
+    right: -50px;
+    top: 20px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(0, 200, 255, 0.1),
+      rgba(138, 43, 226, 0.05)
+    );
+    z-index: -1;
+  }
+}
+
+// Education styles
+.education-section {
+  .education-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    gap: 2rem;
+  }
+
+  .education-card {
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+    transition: transform 0.3s, box-shadow 0.3s;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+
+      .education-icon {
+        transform: rotateY(180deg);
+      }
+    }
+  }
+
+  .education-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: $gradient-primary;
+    border-radius: 50%;
+    margin-right: 1.5rem;
+    flex-shrink: 0;
+    color: white;
+    font-size: 1.5rem;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+
+    i {
+      font-size: 1.8rem;
+    }
+  }
+
+  .education-details {
+    flex: 1;
+  }
+
+  .degree {
+    font-size: 1.3rem;
+    margin: 0 0 0.5rem;
+    color: $dark-color;
+  }
+
+  .institution {
+    font-weight: 600;
+    color: $primary-color;
+    margin-bottom: 0.3rem;
+  }
+
+  .year {
+    color: #6b7280;
+    font-size: 0.9rem;
+  }
+}
+
+// Contact section
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 6rem;
+  margin-bottom: 4rem;
+
+  .contact-circle {
+    width: 150px;
+    height: 150px;
+    background: $gradient-primary;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0, 200, 255, 0.3);
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border-radius: 50%;
+      border: 2px solid rgba(138, 43, 226, 0.3);
+      animation: pulse 2s infinite;
+    }
+
+    .contact-text {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+    }
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 1.5rem;
+
+    .contact-link {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $dark-color;
+      font-size: 1.3rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s, background 0.3s, color 0.3s;
+
+      &:hover {
+        transform: translateY(-5px);
+        background: $gradient-primary;
+        color: white;
+      }
+    }
+  }
+}
+
+// Media queries for responsiveness
+@media screen and (max-width: 992px) {
+  .skills-section .skills-grid,
+  .education-section .education-cards {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .header-section .name {
+    font-size: 3rem;
+  }
+
+  .header-section .title {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .resume-container {
+    padding: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .experience-section .experience-card {
+    padding: 1.5rem;
+  }
+
+  .experience-section .company-period {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .header-section .name {
+    font-size: 2.5rem;
+  }
+
+  .header-section .title {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .skills-section .skills-grid,
+  .education-section .education-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-section .timeline-container {
+    margin-left: 0;
+  }
+
+  .experience-section .timeline-line {
+    display: none;
+  }
+
+  .experience-section .timeline-node {
+    display: none;
+  }
+
+  .education-section .education-card {
+    flex-direction: column;
+
+    .education-icon {
+      margin: 0 auto 1.5rem;
+    }
+
+    .education-details {
+      text-align: center;
+    }
+  }
+
+  .header-section .name {
+    font-size: 2rem;
+  }
+
+  .contact-section .contact-circle {
+    width: 120px;
+    height: 120px;
+
+    .contact-text {
+      font-size: 1.2rem;
+    }
+  }
+}

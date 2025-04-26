@@ -1,0 +1,30 @@
+<div class="resume-container" #resumeContainer>
+  <div class="parallax-bg"></div>
+  <div class="particles"></div>
+
+  <!-- Education Section -->
+  <section class="education-section">
+    <div class="section-divider"></div>
+
+    <div class="education-cards">
+      <ng-container *ngFor="let item of items">
+        <div
+          class="education-card"
+          role="button"
+          (click)="goToProjects(item.link)"
+          (keydown)="goToProjects(item.link)"
+          style="cursor: pointer"
+          tabindex="0"
+        >
+          <div class="education-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <div class="education-details">
+            <h3 class="degree">{{ item.title }}</h3>
+            <div class="institution">{{ item.desc }}</div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </section>
+</div>

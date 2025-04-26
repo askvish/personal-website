@@ -1,0 +1,63 @@
+<mat-toolbar class="header">
+  <div class="logo-section">
+    <img src="/assets/WAVING_HAND_400px.gif" alt="Logo" class="logo" />
+    <span class="title">Hello World</span>
+  </div>
+
+  <span class="spacer"></span>
+
+  <button mat-icon-button class="menu-button" (click)="toggleMenu()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <nav class="nav-links" [class.open]="isMenuOpen">
+    <button
+      mat-button
+      routerLink="/home"
+      routerLinkActive="active"
+      (click)="toggleMenu()"
+    >
+      Home
+    </button>
+    <button
+      mat-button
+      routerLink="/resume"
+      routerLinkActive="active"
+      (click)="toggleMenu()"
+    >
+      Resume
+    </button>
+    <button
+      mat-button
+      routerLink="/projects"
+      routerLinkActive="active"
+      (click)="toggleMenu()"
+    >
+      Projects
+    </button>
+    <button
+      mat-button
+      routerLink="/technopedia"
+      routerLinkActive="active"
+      (click)="toggleMenu()"
+    >
+      Technopedia
+    </button>
+    <button
+      mat-button
+      routerLink="/cheat-sheets"
+      routerLinkActive="active"
+      (click)="toggleMenu()"
+    >
+      CheatSheets
+    </button>
+    <button
+      mat-button
+      routerLink="/contact"
+      routerLinkActive="active"
+      (click)="toggleMenu()"
+    >
+      Contact Me
+    </button>
+  </nav>
+</mat-toolbar>

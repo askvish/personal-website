@@ -1,0 +1,109 @@
+<mat-sidenav-container class="sidenav-container" autosize>
+  <mat-sidenav mode="side" opened>
+    <section style="max-width: 220px">
+      <header class="header">
+        <mat-icon matRipple class="mat-icon-s4" (click)="isMenuHidden = !isMenuHidden">menu
+        </mat-icon>
+        <span [hidden]="isMenuHidden">Technologies</span>
+      </header>
+
+      <mat-nav-list [@listSlide]="technologies.length">
+        <ng-container *ngFor="let technology of technologies">
+          <a mat-list-item (click)="setActiveContent(technology.id)"
+            [matTooltip]="isMenuHidden ? technology.name : null">
+            <div class="technologyWrapper">
+              <div class="iconWrapper">
+                <i matListItemAvatar style="padding: 10px" [class]="technology.icon"
+                  [ngClass]="{ 'fa-beat': activeContent === technology.id }"></i>
+              </div>
+
+              <span [hidden]="isMenuHidden" [ngClass]="{ activeContent: activeContent === technology.id }">{{
+                technology.name }}</span>
+            </div>
+          </a>
+        </ng-container>
+      </mat-nav-list>
+    </section>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <section class="dFlexColumn" style="height: inherit">
+      <header class="selectedPageHeader border-bottom" [hidden]="!activeContent">
+        <h3 class="border-bottom">
+          {{ activeContent | titlecase }}
+        </h3>
+      </header>
+      <div class="content">
+        <div *ngIf="activeContent === 'git'">
+          <div style="margin: 0px 36px">
+            <mat-tab-group>
+              <mat-tab label="Pdfs">
+                <mat-accordion *ngFor="let pdfUrl of pdfUrls; let i = index">
+                  <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Git cheat sheet {{ i + 1 }}
+                      </mat-panel-title>
+                      <!-- <mat-panel-description> Git Hand written notes </mat-panel-description> -->
+                    </mat-expansion-panel-header>
+                    <embed [src]="pdfUrl | safe : 'resourceUrl'" type="application/pdf" width="100%" height="800px" />
+                  </mat-expansion-panel>
+                </mat-accordion>
+              </mat-tab>
+              <mat-tab label="Markdowns - by Ashok">
+                <app-markdown-viewer></app-markdown-viewer>
+              </mat-tab>
+              <mat-tab label="Links"> Content 3 </mat-tab>
+            </mat-tab-group>
+          </div>
+        </div>
+        <div *ngIf="activeContent === 'markdown'">
+          <div style="margin: 0px 36px">
+            <mat-tab-group>
+              <mat-tab label="Pdfs">
+                <mat-accordion *ngFor="let pdfUrl of pdfUrls; let i = index">
+                  <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Markdown cheat sheet {{ i + 1 }}
+                      </mat-panel-title>
+                      <!-- <mat-panel-description> Git Hand written notes </mat-panel-description> -->
+                    </mat-expansion-panel-header>
+                    <embed [src]="pdfUrl | safe : 'resourceUrl'" type="application/pdf" width="100%" height="800px" />
+                  </mat-expansion-panel>
+                </mat-accordion>
+              </mat-tab>
+              <mat-tab label="Markdowns - by Ashok">
+                <app-markdown-viewer></app-markdown-viewer>
+              </mat-tab>
+              <mat-tab label="Links"> Content 3 </mat-tab>
+            </mat-tab-group>
+          </div>
+        </div>
+        <div *ngIf="activeContent === 'angular'">
+          <div style="margin: 0px 36px">
+            <mat-tab-group>
+              <mat-tab label="Pdfs">
+                <mat-accordion *ngFor="let pdfUrl of pdfUrls; let i = index">
+                  <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Angular cheat sheet {{ i + 1 }}
+                      </mat-panel-title>
+                      <!-- <mat-panel-description> Git Hand written notes </mat-panel-description> -->
+                    </mat-expansion-panel-header>
+                    <embed [src]="pdfUrl | safe : 'resourceUrl'" type="application/pdf" width="100%" height="800px" />
+                  </mat-expansion-panel>
+                </mat-accordion>
+              </mat-tab>
+              <mat-tab label="Markdowns - by Ashok">
+                <app-markdown-viewer></app-markdown-viewer>
+              </mat-tab>
+              <mat-tab label="Links"> Content 3 </mat-tab>
+            </mat-tab-group>
+          </div>
+        </div>
+      </div>
+    </section>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,98 @@
+/* You can add global styles to this file, and also import other style files */
+/* Add application styles & imports to this file! */
+@use "@angular/material" as mat;
+
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+@import "github-markdown-css/github-markdown.css";
+
+@include mat.core();
+
+// Modern variables
+$primary-color: #00c8ff;
+$secondary-color: #8a2be2;
+$dark-color: #111827;
+$light-color: #f8fafc;
+$accent-color: #ff6b6b;
+$gradient-primary: linear-gradient(135deg, $primary-color, $secondary-color);
+
+html,
+body {
+  height: 100%;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.custom-dialog-container {
+  margin: 0 auto; /* Center the dialog horizontally */
+  border-radius: 8px; /* Optional: Rounded corners */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25); /* Optional: Add shadow */
+  overflow: hidden; /* Prevent overflow issues */
+}
+
+.mat-dialog-container {
+  padding: 0; /* Remove default padding if needed */
+}
+
+/* Apply to all scrollable elements */
+::-webkit-scrollbar {
+  width: 10px; /* Width of vertical scrollbar */
+  height: 8px; /* Height of horizontal scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f0f0; /* Track color */
+  border-radius: 8px; /* Rounded corners */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* Scrollbar thumb color */
+  border-radius: 8px; /* Rounded corners */
+  border: 2px solid transparent; /* Optional: Add space around the thumb */
+  background-clip: content-box; /* Avoid border covering the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Darken thumb on hover */
+}
+
+.dFlex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.dFlexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.alignCenter {
+  align-items: center;
+}
+
+.justifyCenter {
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+border-bottom {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.dFlexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

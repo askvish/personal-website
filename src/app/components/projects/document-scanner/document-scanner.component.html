@@ -1,0 +1,41 @@
+<div class="scanner-container">
+  <h1 class="title">📄 Mobile Document Scanner</h1>
+
+  <!-- Initial Scan Button -->
+  <div class="start-scan" *ngIf="!cameraVisible">
+    <button class="scan-btn" (click)="startScanning()">📷 Scan Document</button>
+  </div>
+
+  <!-- Camera Window -->
+  <div class="camera-window" *ngIf="cameraVisible">
+    <webcam
+      [height]="videoHeight"
+      [width]="videoWidth"
+      style="border-radius: 8px;"
+      [trigger]="triggerObservable"
+      (imageCapture)="handleImage($event)"
+    ></webcam>
+    <button class="capture-btn" (click)="captureImage()">Capture</button>
+  </div>
+
+  <!-- Loading Animation During OCR -->
+  <div class="loader" *ngIf="loading">
+    <div class="spinner"></div>
+    <p>Extracting text...</p>
+  </div>
+
+  <!-- Display Captured Image -->
+  <div class="preview-container" *ngIf="capturedImage && !loading">
+    <h3>Preview:</h3>
+    <img [src]="capturedImage" alt="Captured Document" class="preview-image" />
+    <button class="ocr-btn" (click)="performOCR()">Extract Text</button>
+  </div>
+
+  <!-- OCR Output -->
+  <div class="ocr-output" *ngIf="extractedText">
+    <h3>Extracted Text:</h3>
+    <textarea rows="8" readonly>{{ extractedText }}</textarea>
+    <button class="save-btn" (click)="saveAsPDF()">Save as PDF</button>
+  </div>
+
+</div>

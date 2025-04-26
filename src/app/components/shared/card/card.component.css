@@ -1,0 +1,33 @@
+.project-card {
+  width: 300px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.project-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
+}
+mat-card-content {
+  margin-bottom: 20px;
+}
+
+mat-card-content p {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #444;
+}
+
+.btn {
+  border-radius: 6px;
+  background-color: #222;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  color: #222;
+  background-color: #fff;
+  border: 1px solid #222;
+}

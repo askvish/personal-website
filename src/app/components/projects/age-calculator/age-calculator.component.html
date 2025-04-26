@@ -1,0 +1,83 @@
+<div class="dFlexCenter" style="min-height: 60vh; margin: 36px 0">
+  <mat-card class="custom-shadow-card" appearance="outlined">
+    <mat-card-header>
+      <div mat-card-avatar class="dFlexCenter">
+        <i class="fas fa-calculator fa-3x"></i>
+      </div>
+      <mat-card-title>Age Calculator</mat-card-title>
+      <mat-card-subtitle>by Ashok</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content style="margin-top: 0.5rem">
+      <form
+        [formGroup]="ageForm"
+        style="display: grid; grid-template-columns: 1fr; width: 360px"
+      >
+        <mat-form-field appearance="outline">
+          <mat-label>Date of Birth</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker1"
+            placeholder="MM/DD/YYYY"
+            formControlName="dateOfBirth"
+            required
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker1"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Today's Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker2"
+            placeholder="MM/DD/YYYY"
+            formControlName="todaysDate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker2"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions
+      style="display: grid; grid-template-columns: 1fr; gap: 1rem"
+    >
+      <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem">
+        <button
+          mat-raised-button
+          [color]="isLoading ? '' : 'primary'"
+          (click)="calculateAge()"
+          [disabled]="!ageForm.valid"
+        >
+          <span *ngIf="!isLoading">Calculate Age</span>
+          <mat-spinner
+            color="neu"
+            diameter="16"
+            *ngIf="isLoading"
+          ></mat-spinner>
+        </button>
+        <button
+          mat-raised-button
+          color="warn"
+          (click)="reset()"
+          [disabled]="isLoading"
+        >
+          <span>Reset</span>
+        </button>
+      </div>
+
+      <div *ngIf="ageDetails" style="margin-top: 1rem">
+        <p style="font-size: large; text-align: center">
+          Your Age:
+          <span style="font-weight: bold">{{ ageDetails.years }}</span> years,
+          <span style="font-weight: bold">{{ ageDetails.months }}</span> months,
+          and <span style="font-weight: bold">{{ ageDetails.days }}</span> days
+        </p>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>

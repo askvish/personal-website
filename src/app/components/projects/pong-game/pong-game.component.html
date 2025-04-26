@@ -1,0 +1,52 @@
+<div class="game-container">
+  <div class="game-header">
+    <h1>Modern Pong</h1>
+    <div class="controls">
+      <div class="difficulty-selector">
+        <span class="label">Difficulty:</span>
+        <div class="select-container">
+          <select
+            class="select-dropdown"
+            [(ngModel)]="selectedDifficulty"
+            (change)="setDifficulty(selectedDifficulty)"
+            [disabled]="isPlaying"
+          >
+            <option
+              *ngFor="let difficulty of difficulties"
+              [value]="difficulty"
+            >
+              {{ difficulty | titlecase }}
+            </option>
+          </select>
+          <div class="select-arrow"></div>
+        </div>
+      </div>
+      <button
+        (click)="toggleGame()"
+        class="game-button"
+        [class.pause-button]="isPlaying"
+      >
+        {{ isPlaying ? "Pause" : "Start" }}
+      </button>
+    </div>
+  </div>
+
+  <div class="canvas-container">
+    <canvas #gameCanvas></canvas>
+  </div>
+
+  <div class="game-footer">
+    <div class="player-info">
+      <div class="player player-human">
+        <h3>Player</h3>
+        <p>
+          Use <span class="key">↑</span> and <span class="key">↓</span> keys
+        </p>
+      </div>
+      <div class="player player-ai">
+        <h3>AI Opponent</h3>
+        <p>{{ selectedDifficulty | titlecase }} difficulty</p>
+      </div>
+    </div>
+  </div>
+</div>

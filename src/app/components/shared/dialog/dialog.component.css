@@ -1,0 +1,37 @@
+.dialog-container {
+  max-height: 80vh; /* Limit content height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding: 8px 24px; /* Add padding for content */
+}
+
+.angular-logo {
+  display: flex ;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.angular-gradient-text {
+  font-size: 80px; /* Adjust size to match your design */
+  font-weight: lighter;
+  margin: 0; /* Ensure no extra spacing */
+  /* margin-top: 5px; */
+  padding: 0;
+  display: inline-block; /* Keep it aligned with the logo */
+  background: linear-gradient(90deg, #DD0031, #C3002F, #FF5733);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text; /* Standard property for Firefox support */
+  text-fill-color: transparent; /* Makes it transparent */
+  /* Ensures gradient fully covers text bounds */
+  line-height: 1; /* Prevent extra spacing between lines */
+}
+
+
+@media (max-width: 768px) {
+  .custom-dialog-container {
+    max-width: 100% !important; /* Take full width on smaller screens */
+    margin: 0; /* Remove horizontal margin */
+  }
+}

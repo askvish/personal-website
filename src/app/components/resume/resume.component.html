@@ -1,0 +1,109 @@
+<div class="resume-container" #resumeContainer>
+  <div class="parallax-bg"></div>
+  <div class="particles"></div>
+
+  <!-- Header Section -->
+  <header class="header-section">
+    <h1 class="name">{{ resume.personal.name }}</h1>
+    <h2 class="title">
+      {{ resume.personal.title }} | {{ resume.personal.company }} |
+      {{ resume.personal.location }}
+    </h2>
+    <p class="summary">{{ resume.personal.summary }}</p>
+    <div class="header-accent"></div>
+  </header>
+
+  <!-- Experience Section -->
+  <section class="experience-section">
+    <h2 class="section-title">Work Experience</h2>
+    <div class="section-divider"></div>
+
+    <div class="timeline-container">
+      <div class="timeline-line">
+        <div class="timeline-connector"></div>
+      </div>
+
+      <div class="experience-timeline">
+        <div
+          class="experience-item"
+          *ngFor="let job of resume.experience; let i = index"
+        >
+          <div
+            class="timeline-node"
+            [attr.data-year]="job.period.split(' - ')[0]"
+          ></div>
+          <div class="experience-card">
+            <div class="experience-header">
+              <h3 class="job-title">{{ job.title }}</h3>
+              <div class="company-period">
+                <span class="company-name"
+                  >{{ job.company }} | {{ job.location }}</span
+                >
+                <span class="job-period">{{ job.period }}</span>
+              </div>
+            </div>
+            <div *ngFor="let desc of job.description">
+              <li class="job-description">{{ desc }}</li>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section class="education-section">
+    <h2 class="section-title">Education</h2>
+    <div class="section-divider"></div>
+
+    <div class="education-cards">
+      <div class="education-card" *ngFor="let edu of resume.education">
+        <div class="education-icon">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        <div class="education-details">
+          <h3 class="degree">{{ edu.degree }}</h3>
+          <div class="institution">{{ edu.institution }}</div>
+          <div class="year">{{ edu.year }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements Section -->
+  <section class="achievement-section">
+    <h2 class="section-title">Achievements</h2>
+    <div class="section-divider"></div>
+
+    <div class="achievement-cards">
+      <div class="achievement-card" *ngFor="let ach of resume.achievements">
+        <div class="achievement-icon">
+          <i class="fas fa-trophy"></i>
+        </div>
+        <div class="achievement-details">
+          <h3 class="degree">{{ ach.title }}</h3>
+          <div class="institution">{{ ach.field }}</div>
+          <div class="year">{{ ach.year }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="skills-section">
+    <h2 class="section-title">Technical Skills</h2>
+    <div class="section-divider"></div>
+
+    <div class="skills-grid">
+      <div class="skill-item" *ngFor="let skill of resume.skills">
+        <div class="skill-header">
+          <span class="skill-name">{{ skill.name }}</span>
+          <span class="skill-percentage">{{ skill.level }}</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-bar-progress" [style.width.%]="skill.level"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

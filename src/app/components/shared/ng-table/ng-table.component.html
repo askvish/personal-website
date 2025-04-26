@@ -1,0 +1,17 @@
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!-- Command Column -->
+  <ng-container matColumnDef="command">
+    <mat-header-cell *matHeaderCellDef> Command </mat-header-cell>
+    <mat-cell *matCellDef="let command"> <code>{{ command.command }}</code> </mat-cell>
+  </ng-container>
+
+  <!-- Meaning Column -->
+  <ng-container matColumnDef="meaning">
+    <mat-header-cell *matHeaderCellDef> Meaning </mat-header-cell>
+    <mat-cell *matCellDef="let command"> {{ command.meaning }} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="colSource"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: colSource;"></mat-row>
+</mat-table>

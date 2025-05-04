@@ -8,7 +8,7 @@ import { GameObject, GameState } from './game-objects.model';
 export class GameService {
   private readonly FRAME_RATE = 60;
   private readonly BALL_SPEED = 10;
-  private readonly PADDLE_SPEED = 8;
+  private readonly PADDLE_SPEED = 16;
   private readonly INITIAL_PADDLE_HEIGHT = 100;
   private readonly INITIAL_BALL_SIZE = 15;
 

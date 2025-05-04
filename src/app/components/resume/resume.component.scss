@@ -518,7 +518,7 @@ section {
 // Media queries for responsiveness
 @media screen and (max-width: 992px) {
   .skills-section .skills-grid,
-  .education-section .education-cards {
+  .education-section .education-cards .achievement-section .achievement-cards {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
 
@@ -560,7 +560,8 @@ section {
 
 @media screen and (max-width: 576px) {
   .skills-section .skills-grid,
-  .education-section .education-cards {
+  .education-section .education-cards,
+  .achievement-section .achievement-cards {
     grid-template-columns: 1fr;
   }
 
@@ -584,6 +585,18 @@ section {
     }
 
     .education-details {
+      text-align: center;
+    }
+  }
+
+  .achievement-section .achievement-card {
+    flex-direction: column;
+
+    .achievement-icon {
+      margin: 0 auto 1.5rem;
+    }
+
+    .achievement-details {
       text-align: center;
     }
   }

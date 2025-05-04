@@ -17,7 +17,6 @@ $text-light: #1a1a1a;
   align-items: center;
   gap: 2rem;
   box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
-  margin-top: 4rem;
 
   .contact-circle {
     width: 150px;
@@ -110,4 +109,12 @@ $text-light: #1a1a1a;
     transform: scale(1);
     opacity: 1;
   }
+}
+
+@media screen and (max-width: 768px) {
+
+  .copyright > p{
+    font-size: 1rem;
+  }
+
 }
